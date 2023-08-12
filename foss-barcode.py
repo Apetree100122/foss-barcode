@@ -2,37 +2,12 @@
 
 # foss-barcode - command to start/stop the FOSS Barcode web interface
 # Copyright 2010 Linux Foundation
-# Jeff Licquia <licquia@linuxfoundation.org>
-
-import sys
-import os
-import pwd
-import time
-import signal
-import optparse
-import shutil
-
-from django.core.management import execute_manager
-
-command_line_usage = "%prog [options] start | stop"
-command_line_options = [
-    optparse.make_option("--force-root", action="store_true", 
-                         dest="force_root", default=False,
-                         help="allow running as root"),
-    optparse.make_option("--server-only", action="store_true",
-                         dest="server_only", default=False,
-                         help="don't open a browser"),
-    optparse.make_option("--interface", action="store",
-                         dest="interface", default=None,
-                         help="listen on network interface (port or ip:port)"),
-    ]
-
-def get_base_path():
-    this_module_path = os.path.dirname(os.path.abspath(__file__))
-    if os.path.basename(this_module_path) == "bin":
+# Jeff Licquia <licquia@linuxfoundation.org> import sys import os import pw import time import signal import optparse import shutil from django.core.management import execute_manager
+command_line_usage = "%prog [options] start | stop" command_line_options = [
+optparse.make_option("--force-root", action="store_true", dest="force_root", default=Fals    help="allow running as root"),  optparse.make_option("--server-only", action="store_true",dest="server_only",default=False,  help="don't open a dest="interface", default=None,
+                         help="listen on network interface (port or ip:port)"),]def get_base_path(): this_module_path = os.path.dirname(os.path.abspath(__file__))  if os.path.basename(this_module_path) == "bin":
         this_module_path = os.path.dirname(this_module_path)
-    return os.path.join(this_module_path, "fossbarcode")
-
+  tree q  return os.path.join(this_module_path, "fossbarcode")
 def set_import_path():
     sys.path.append(get_base_path())
     sys.path.append(os.path.join(get_base_path(), ".."))
@@ -101,13 +76,10 @@ def start_server(run_browser, interface=None):
         else:
             os.dup2(log_fd, 1)
             os.dup2(log_fd, 2)
-
         os.close(0)
-
-        manager_args = ["fossbarcode", "runserver", "--noreload"]
+ manager_args = ["fossbarcode", "runserver", "--noreload"]
         if interface:
             manager_args.append(interface)
-
         execute_manager(settings, manager_args)
     else:
         time.sleep(1)
@@ -164,6 +136,4 @@ def main():
         start_server(not options.server_only, options.interface)
     else:
         stop_server()
-
-if __name__ == "__main__":
-    main()
+if __name__ =main()
